@@ -6,7 +6,7 @@ import 'package:drift/drift.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../data/app_database.dart';
-import '../../../data/schema/tables.dart';
+// import '../../../data/schema/tables.dart';
 import '../domain/wallet_entity.dart';
 import '../domain/fee_calculator.dart';
 
