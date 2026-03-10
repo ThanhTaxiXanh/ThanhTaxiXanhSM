@@ -7,13 +7,4 @@ targets:
       drift_dev:
         options:
           # Tạo migration SQL khi schema thay đổi
-          generate_connect_constructor: true
-          # Tắt eager loading để tối ưu performance
-          eager_loading: false
-          # Tạo type-safe companions
-          generate_companions: true
-
-      # === RIVERPOD: tắt code-gen annotation nếu không dùng @riverpod ===
-      riverpod_generator:
-        options:
-          riverpod_version: 2
+          store_date_time_values_as_text: true
