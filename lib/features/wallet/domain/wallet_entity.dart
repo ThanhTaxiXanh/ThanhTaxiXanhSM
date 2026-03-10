@@ -27,6 +27,19 @@ class WalletEntity {
     this.isDeleted = false,
   });
 
+  /// Wallet giả dùng cho preview / test / CI
+  factory WalletEntity.preview() {
+    return const WalletEntity(
+      id: -1,
+      name: 'Preview',
+      isXanhSm: true,
+      feeRate: 0,
+      moneyTypes: [],
+      emoji: '🧮',
+      sortOrder: -1,
+    );
+  }
+
   /// Parse moneyTypes từ JSON string
   static List<String> parseMoneyTypes(String json) {
     try {
@@ -47,6 +60,9 @@ class WalletEntity {
 
   /// Phí theo % string: "18%"
   String get feeRatePercent => '${(feeRate * 100).toStringAsFixed(0)}%';
+
+  /// Phần % tài xế nhận
+  double get driverPercent => 1 - feeRate;
 
   WalletEntity copyWith({
     int? id,
@@ -72,6 +88,7 @@ class WalletEntity {
     );
   }
 
+  /// So sánh entity theo id
   @override
   bool operator ==(Object other) =>
       identical(this, other) || other is WalletEntity && id == other.id;
@@ -82,53 +99,4 @@ class WalletEntity {
   @override
   String toString() =>
       'WalletEntity(id: $id, name: $name, isXanhSm: $isXanhSm)';
-}
-
-/// Kết quả tính phí nền tảng
-class FeeCalculationResult {
-  final WalletEntity wallet;
-  final DateTime periodStart;
-  final DateTime periodEnd;
-
-  /// Doanh thu theo loại tiền: {"Tiền Mặt": 500000, "Thẻ/Ví": 300000}
-  final Map<String, double> revenueByType;
-
-  /// Tổng doanh thu
-  final double totalRevenue;
-
-  /// Tỷ lệ phí
-  final double feeRate;
-
-  /// Tổng phí phải đóng
-  final double totalFee;
-
-  /// Phân bổ trừ tiền: ưu tiên Thẻ/Ví trước
-  final double deductFromCard;
-  final double deductFromCash;
-
-  const FeeCalculationResult({
-    required this.wallet,
-    required this.periodStart,
-    required this.periodEnd,
-    required this.revenueByType,
-    required this.totalRevenue,
-    required this.feeRate,
-    required this.totalFee,
-    required this.deductFromCard,
-    required this.deductFromCash,
-  });
-
-  /// Số dư dự kiến sau khi đóng phí (theo loại tiền)
-  Map<String, double> get balanceAfterFee {
-    final balances = Map<String, double>.from(revenueByType);
-    // Trừ Thẻ/Ví trước
-    if (balances.containsKey('Thẻ/Ví')) {
-      balances['Thẻ/Ví'] = (balances['Thẻ/Ví'] ?? 0) - deductFromCard;
-    }
-    // Trừ Tiền Mặt
-    if (balances.containsKey('Tiền Mặt')) {
-      balances['Tiền Mặt'] = (balances['Tiền Mặt'] ?? 0) - deductFromCash;
-    }
-    return balances;
-  }
 }
