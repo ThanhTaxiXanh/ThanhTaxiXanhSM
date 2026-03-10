@@ -1,0 +1,63 @@
+name: thanh_taxi_xanh_sm
+description: "Ứng dụng quản lý thu chi dành cho tài xế công nghệ Việt Nam. Offline-first, bảo mật cao, miễn phí."
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # === STATE MANAGEMENT ===
+  flutter_riverpod: ^2.6.1
+
+  # === DATABASE ===
+  drift: ^2.21.0
+  sqlite3_flutter_libs: ^0.5.24
+  path_provider: ^2.1.4
+  path: ^1.9.0
+
+  # === BẢO MẬT (FIX #9: thêm crypto bị thiếu) ===
+  crypto: ^3.0.3
+  flutter_secure_storage: ^9.2.2
+  local_auth: ^2.3.0
+  encrypt: ^5.0.3
+
+  # === BIỂU ĐỒ ===
+  fl_chart: ^0.69.0
+
+  # === THÔNG BÁO ===
+  flutter_local_notifications: ^17.2.3
+
+  # === TIỆN ÍCH ===
+  intl: ^0.19.0
+  uuid: ^4.5.1
+
+  # === GOOGLE DRIVE BACKUP ===
+  google_sign_in: ^6.2.1
+  googleapis: ^13.2.0
+  http: ^1.2.2
+
+  # === XUẤT DỮ LIỆU ===
+  csv: ^6.0.0
+  excel: ^4.0.6
+  share_plus: ^10.1.3
+
+  # === UI ===
+  google_fonts: ^6.2.1
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  drift_dev: ^2.21.0
+  build_runner: ^2.4.12
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/

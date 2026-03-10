@@ -1,0 +1,66 @@
+# === FLUTTER / DART ===
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+pubspec.lock
+
+# === ANDROID ===
+android/.gradle/
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/**/GeneratedPluginRegistrant.java
+android/key.properties
+**/*.keystore
+**/*.jks
+
+# === IOS ===
+ios/.generated/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/Flutter/flutter_export_environment.sh
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+ios/Pods/
+
+# === MACOS ===
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Pods/
+
+# === WEB ===
+lib/generated_plugin_registrant.dart
+
+# === IDE ===
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+Thumbs.db
+
+# === GENERATED CODE (commit .g.dart nếu cần CI) ===
+# *.g.dart
+# *.drift.dart
+
+# === ENVIRONMENT / SECRETS ===
+*.env
+.env.*
+google-services.json
+GoogleService-Info.plist
+
+# === MISC ===
+*.log
+*.lock
+coverage/
+doc/api/
